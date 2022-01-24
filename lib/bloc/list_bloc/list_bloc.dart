@@ -18,14 +18,14 @@ class FormListBloc extends Bloc<FormListEvent, FormListState>{
   if(event is GetForms){
     try{
       List<FormModel> forms = await formsRepository.getAllForms(query: event.query);
-      yield FormHasData(forms);
+      yield FormListHasData(forms);
     }catch (e){
       yield FormListError(e.toString());
     }
   }else if(event is DeleteForms){
    try{
      await formsRepository.deleteFormById(event.forms!.id ?? 0);
-     yield FormHasData(await formsRepository.getAllForms(query: event.query));
+     yield FormListHasData(await formsRepository.getAllForms(query: event.query));
    }catch(e){
      yield FormListError(e.toString());
    }

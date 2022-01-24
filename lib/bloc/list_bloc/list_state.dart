@@ -24,10 +24,10 @@ class FormListError extends FormListState{
   String toString() => 'Notes List Failure --> message: $errorMessage';
 }
 
-class FormHasData extends FormListState{
+class FormListHasData extends FormListState{
   final List<FormModel>? forms;
 
-  const FormHasData([this.forms]);
+  const FormListHasData([this.forms]);
   @override
   // TODO: implement props
   List<Object?> get props => [forms];
