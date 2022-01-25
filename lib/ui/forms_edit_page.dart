@@ -2,6 +2,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_crud_localdb/controller/forms_controller.dart';
 import 'package:get/get.dart';
@@ -37,7 +38,7 @@ class FormsEditPage extends GetView<FormsController>{
                     controller.fullNameFocusNode.requestFocus();
                   },
                   validator: (value){
-
+                    return controller.validateFullName(value);
                   },
                 ),
                 const SizedBox(height: 10,),
@@ -93,9 +94,6 @@ class FormsEditPage extends GetView<FormsController>{
                   onFieldSubmitted: (String value){
                     controller.telpFocusNode.requestFocus();
                   },
-                  validator: (value){
-
-                  },
                 ),
                 const SizedBox(height: 10,),
                 TextFormField(
@@ -111,9 +109,6 @@ class FormsEditPage extends GetView<FormsController>{
                   onEditingComplete: controller.emailFocusNode.requestFocus,
                   onFieldSubmitted: (String value){
                     controller.emailFocusNode.requestFocus();
-                  },
-                  validator: (value){
-
                   },
                 ),
                 const SizedBox(height: 10,),
@@ -131,9 +126,6 @@ class FormsEditPage extends GetView<FormsController>{
                   onFieldSubmitted: (String value){
                     controller.addressFocusNode.requestFocus();
                   },
-                  validator: (value){
-
-                  },
                 ),
                 const SizedBox(height: 10,),
                 TextFormField(
@@ -149,9 +141,6 @@ class FormsEditPage extends GetView<FormsController>{
                   onEditingComplete: controller.jobFocusNode.requestFocus,
                   onFieldSubmitted: (String value){
                     controller.jobFocusNode.requestFocus();
-                  },
-                  validator: (value){
-
                   },
                 ),
                 const SizedBox(height: 10,),

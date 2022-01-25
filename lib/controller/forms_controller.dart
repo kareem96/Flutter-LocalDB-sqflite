@@ -63,7 +63,6 @@ class FormsController extends GetxController{
     title = 'Input Forms';
     Get.to(() => FormsEditPage());
   }
-
   editMode(){
     if(formKey.currentState!.validate()){
       loading(true);
@@ -74,13 +73,11 @@ class FormsController extends GetxController{
       }
     }
   }
-
   refreshFormsList(){
     getAll();
     Get.back();
     Get.back();
   }
-
   saveForms() async{
     final forms = FormsModel(
       fullName: fullNameController.text.trim(),
@@ -96,7 +93,6 @@ class FormsController extends GetxController{
       refreshFormsList();
     });
   }
-
   deleteForms(int formsId) async{
     loading(true);
     repository.delete(formsId).then((data){
@@ -104,7 +100,6 @@ class FormsController extends GetxController{
       refreshFormsList();
     });
   }
-
   editForms(FormsModel forms){
     fullNameController.text = forms.fullName ?? '';
     nickNameController.text = forms.nickName ?? '';
@@ -115,7 +110,6 @@ class FormsController extends GetxController{
     jobController.text = forms.job ?? '';
     Get.to(() => FormsEditPage(), arguments: forms.id);
   }
-
   detailForm(FormsModel forms){
     fullNameController.text = forms.fullName ?? '';
     nickNameController.text = forms.nickName ?? '';
@@ -126,7 +120,6 @@ class FormsController extends GetxController{
     jobController.text = forms.job ?? '';
     Get.to(() => DetailFormPage(), arguments: forms.id);
   }
-
   updateForms() async{
     final forms = FormsModel(
       id: Get.arguments,
@@ -142,5 +135,13 @@ class FormsController extends GetxController{
       loading(false);
       refreshFormsList();
     });
+  }
+
+
+  validateFullName(String? value){
+    if(value == null || value.isEmpty){
+      return 'Field not empty';
+    }
+    return null;
   }
 }
