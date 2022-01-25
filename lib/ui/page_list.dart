@@ -54,9 +54,9 @@ class HomePageList extends GetView<FormsController> {
                     color: Colors.red,
                     onPressed: (){
                       Get.defaultDialog(
-                        title: 'Delete',
-                        middleText: 'S${controller.formList[index].fullName}?',
-                        textCancel: 'Cancel',
+                        title: 'Warning!',
+                        middleText: 'Do you want delete, ${controller.formList[index].fullName}?',
+                        textCancel: 'No',
                         onConfirm: (){
                           controller.deleteForms(controller.formList[index].id!);
                           if(controller.loading.value == true){
