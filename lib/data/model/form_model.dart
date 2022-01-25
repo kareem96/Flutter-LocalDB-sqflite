@@ -1,48 +1,70 @@
 
 
+import 'dart:convert';
 
-
-class FormModel{
+class FormsModel{
   int? id;
   String? fullName;
   String? nickName;
-  int? telp;
-  String? email;
   String? gender;
+  String? telp;
+  String? email;
   String? address;
   String? job;
 
-  FormModel({
+  FormsModel({
     this.id,
     this.fullName,
     this.nickName,
+    this.gender,
     this.telp,
     this.email,
-    this.gender,
     this.address,
     this.job
   });
 
-  factory FormModel.fromDatabaseJson(Map<String, dynamic> json) => FormModel(
+  factory FormsModel.fromJson(Map<String, dynamic> json) => FormsModel(
     id: json['id'] ?? 0,
     fullName: json['fullName'] ?? '',
     nickName: json['nickName'] ?? '',
-    telp: json['telp'] ?? 0,
+    gender: json['gender'] ?? '',
+    telp: json['telp'] ?? '',
     email: json['email'] ?? '',
     address: json['address'] ?? '',
     job: json['job'] ?? '',
   );
 
-  Map<String, dynamic> toJson(){
-    var map = {
-      'fullName': this.fullName ?? '',
-      'nickName': this.nickName ?? '',
-      'telp': this.telp ?? '',
-      'email': this.email ?? '',
-      'address': this.address ?? '',
-      'job': this.job ?? '',
+  Map<String, dynamic> toJson() => {
+      'fullName': fullName ?? '',
+      'nickName': nickName ?? '',
+      'gender': gender ?? '',
+      'telp': telp ?? '',
+      'email': email ?? '',
+      'address': address ?? '',
+      'job': job ?? '',
     };
-    if(map['id']  != null)map['id'] = this.id ?? '';
-    return map;
-  }
+
+  FormsModel copy({
+    int? id,
+    String? fullName,
+    String? nickName,
+    String? gender,
+    String? telp,
+    String? email,
+    String? address,
+    String? job,
+  }) => FormsModel(
+    id: id ?? this.id,
+    fullName: fullName ?? this.fullName,
+    nickName: nickName ?? this.nickName,
+    gender: gender ?? this.gender,
+    telp: telp ?? this.telp,
+    email: email ?? this.email,
+    address: address ?? this.address,
+    job: job ?? this.job,
+  );
 }
+
+
+List<FormsModel> formsFromJson(String str) => List<FormsModel>.from(json.decode(str).map((x) => FormsModel.fromJson(x)));
+String formToJson(List<FormsModel> data) => json.encode(List<dynamic>.from(data.map((e) => e.toJson())));

@@ -37,6 +37,10 @@ dependencies:
   equatable: ^2.0.3
   flutter_bloc: ^8.0.1
   path_provider: ^2.0.8
+
+  intl_phone_field: ^3.0.1
+  get: ^4.2.4
+  path: ^1.8.0
   sqflite: ^2.0.2
 
 dev_dependencies:

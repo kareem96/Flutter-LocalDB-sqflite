@@ -1,20 +1,28 @@
 
 
 
-import 'package:flutter_crud_localdb/data/dao/form_dao.dart';
+
 import 'package:flutter_crud_localdb/data/model/form_model.dart';
+import 'package:flutter_crud_localdb/data/provider/forms_provider.dart';
 
 class FormsRepository{
-  final formsDao = FormDao();
+  final FormsProvider repository;
+  FormsRepository(this.repository);
 
-  Future getAllForms({String? query}) => formsDao.getForms(query: query);
 
-  Future deleteFormById(int id) => formsDao.deleteForms(id);
+  getAll(){
+    return repository.getAll();
+  }
 
-  Future getFormsById({required int id}) => formsDao.getFormById(id: id);
+  save(FormsModel forms){
+    return repository.save(forms);
+  }
 
-  Future insertForms(FormModel forms) => formsDao.createForm(forms);
+  update(FormsModel forms){
+    return repository.update(forms);
+  }
 
-  Future updateForms(FormModel forms) => formsDao.updateForms(forms);
-
+  delete(int id){
+    return repository.delete(id);
+  }
 }
