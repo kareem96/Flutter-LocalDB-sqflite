@@ -6,7 +6,7 @@ A new Flutter project CRUD LocaDB
 
 This project is a starting point for a Flutter application.
 
-add app-release.apk
+https://github.com/kareem96/Knowledge-Test-Widya-Matador/blob/master/app-release.aab
 
 
 A few resources to get you started if this is your first Flutter project:
